@@ -1,0 +1,221 @@
+<!-- Bangalore House Price Predictor -->
+ 
+<!DOCTYPE html>
+<html >
+<head>
+  <meta charset="UTF-8">
+  <title>Bangalore House Price Predictor ML App</title>
+ 
+  <style>
+   
+      body {
+      background-image: url('abhinay.jpg');
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      background-size: cover;
+    }
+ 
+    h1   {color: red;}  /* CSS code for heading h1 */
+    p   {color: yellow;}  /* CSS code for heading h1 */
+ 
+    /* CSS code for button */
+    .button_css {
+    color: #494949 !important;
+    text-transform: uppercase;
+    text-decoration: none;
+    background: #ffffff;
+    padding: 20px;
+    border: 4px solid #494949 !important;
+    display: inline-block;
+    transition: all 0.4s ease 0s;
+    }
+     
+    .button_css:hover {
+    color: #ffffff !important;
+    background: #f6b93b;
+    border-color: #f6b93b !important;
+    transition: all 0.4s ease 0s;
+    }
+     
+    .footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: #401a20;
+  color: white;
+  text-align: center;
+   
+  /* unvisited link */ 
+  a:link { color: White; } 
+  /* visited link */ 
+  a:visited { color: green; }
+}   
+  </style>
+ 
+</head>
+ 
+<body style="background-color:#b3d9ff; >
+>
+ 
+  <!-- Show Oxstandhard Univercity Banner-->
+  <div>
+    <img src="static/images/bangalore house banner.png" class="w3-border w3-padding" alt="Indian AI Production" style="width:100%">
+  </div>
+ 
+  
+  
+ <div class="login">
+     
+    <!-- Form Get input to predict Marks-->
+    <center>
+    <form action="{{ url_for('predict')}}"method="post">
+     <h1><u>Enter the Information of House to Predict the Price</u></h1>
+         
+        <input style="height:30px;width:300px;font-size:14pt; text-align: center; align="center" type="number" name="bathrooms" placeholder="Bathrooms" required="required" width="48" height="10" step=".01"/><br>
+    
+        <input style="height:30px;width:300px;font-size:14pt;text-align: center; align="center" type="number" name="balcony" placeholder="Balcony" required="required" width="48" height="10" step=".01"/><br>
+        
+        <input style="height:30px;width:300px;font-size:14pt;text-align: center; align="center" type="number" name="total_sqft_int" placeholder="Total Squre Foot" required="required" width="48" height="10" step=".01"/><br>
+    
+        <input style="height:30px;width:300px;font-size:14pt;text-align: center; align="center" type="number" name="bhk" placeholder="BHK" required="required" width="48" height="10" step=".01"/><br>
+        
+        <input style="height:30px;width:300px;font-size:14pt;text-align: center; align="center" type="number" name="price_per_sqft" placeholder="Wished Price Per Squre Foot" required="required" width="48" height="10" step=".01"/><br>
+    
+        <select required="required" width="48" height="10" step=".01" class="location" name="location" id="uiLocations"><br>
+        <option value="" disabled="disabled" selected="selected"> Choose a Location </option>
+        <option>Hennur Gardens</option>     
+        <option>Hennur Road</option>                                                        
+        <option>Hebbal</option>                                                        
+        <option>1st Block Jayanagar</option>                                                                
+		<option>Devarabeesana Halli</option>                                                                
+		<option>Whitefield</option>
+        <option>Electronic City</option>
+		<option>Raja Rajeshwari Nagar</option>
+        <option>Haralur Road</option>
+		<option>Marathahalli</option>
+        <option>Hennur Road</option>
+		<option>Bannerghatta Road</option>
+        <option>Uttarahalli</option>
+		<option>Thanisandra</option>
+        <option>Electronic City Phase II</option>
+		<option>Hebbal</option>
+        <option>7th Phase JP Nagar</option>                                            
+		<option>Yelahanka</option>
+        <option>Kanakpura Road</option>  
+		<option>KR Puram</option>
+        <option>Sarjapur</option>       
+		<option>Rajaji Nagar</option>
+        <option>Kasavanhalli</option>    
+		<option>Bellandur</option>
+        <option>Begur Roadr</option>   
+		<option>Banashankari</option>
+        <option>Kothanur</option>   
+		<option>Hormavu</option>
+        <option>Harlur</option>        
+		<option>Akshaya Nagar</option>
+        <option>Electronics City Phase 1</option>       
+		<option>Jakkur</option>
+        <option>Varthur</option>                                                          
+		<option>Chandapura</option>
+        <option>Hennur</option>                                                       
+		<option>Ramamurthy Nagar</option>
+        <option>HSR Layout</option>                                                         
+		<option>Kundalahalli</option>
+        <option>Ramagondanahalli</option>                                                  
+		<option>Koramangala</option>
+        <option>Kaggadasapura</option>    
+		<option>Budigere</option>
+        <option>Hulimavu</option>                                                          
+		<option>Hoodi</option>
+        <option>Malleshwaram</option>                                                      
+		<option>Yeshwanthpur</option>
+        <option>Gottigere</option>                                                   
+		<option>Hegde Nagar</option>
+        <option>8th Phase JP Nagar</option>                                          
+		<option>JP Nagar</option>
+        <option>Bisuvanahalli</option>                                                    
+		<option>Channasandra</option>
+        <option>Vittasandra</option>                                                     
+		<option>Indira Nagar</option>
+        <option>Kengeri</option>                                                    
+		<option>Hosa Road</option>
+        <option>Sahakara Nagar</option>                                              
+		<option>Brookefield</option>
+        <option>Old Airport Road</option>                                          
+		<option>Vijayanagar</option>
+		<option>Balagere</option>                                                                
+        <option>Green Glen Layoutr</option>                                                 
+        <option>Bommasandra</option>               
+		<option>Kudlu Gate</option>
+        <option>Old Madras Road</option>  
+		<option>Panathur</option>
+        <option>Rachenahalli</option>                                                         
+        <option>Talaghattapura</option>   
+		<option>Thigalarapalya</option>
+        <option>Kadugodi</option> 
+		<option>Ambedkar Nagar</option>                                                                
+        <option>Mysore Road</option>   
+		<option>Yelahanka New Town</option>
+        <option>Attibele</option>                                                             
+        <option>Devanahalli</option>
+		<option>Jigani</option>                                                                
+		<option>Dodda Nekkundi</option>                                                                
+		<option>Anekal</option>                                                                
+		<option>Kanakapura</option>
+        <option>Frazer Town</option>                                                        
+        <option>5th Phase JP Nagar</option>   
+		<option>Lakshminarayana Pura</option>
+		<option>Ananth Nagar</option>                                                                
+        <option>TC Palaya</option>                                                          
+        <option>Nagarbhavi</option>         
+		<option>CV Raman Nagar</option>
+        <option>Jalahalli</option>                                               
+		<option>Kudlu</option>
+        <option>Kengeri Satellite Town</option>                                            
+		<option>Bhoganhalli</option>
+        <option>Kalena Agrahara</option>                                                  
+		<option>Doddathoguru</option>
+        <option>Subramanyapura</option>                                                     
+		<option>Horamavu Agara</option>
+        <option>Hebbal Kempapura</option>                                                  
+		<option>Vidyaranyapura</option>
+        <option>BTM 2nd Stage</option>                                                
+		<option>Hosur Road</option>
+        <option>Tumkur Road</option> 
+		<option>Mahadevpura</option>
+        <option>Domlur</option>  
+        <option>Horamavu Banaswadi</option>                                                                
+  </select>      
+ 
+        <br>
+         
+        <br>
+         
+        <!-- Show button -->
+        <div class="button_cont" align="center"><a class="button_css" target="_blank" rel="nofollow noopener">
+            <button type="submit" class="btn btn-primary btn-block btn-large"><strong>Predict House Price</strong></button></a>
+        </div>
+         
+    </form>
+    </center>
+    
+   <!-- Show predicted output using ML model --> 
+   <div>
+       <center>
+   <h2>{{ prediction_text }}</h2>
+       </center>
+   </div>
+ 
+ </div>
+ 
+ 
+<div class="footer">
+    <p>Abhinay Kumar Singh<br>
+     
+      <a style="color:white" href="https://www.instagram.com/abhinaysinghrajputt/">Instagram |</a>
+      <a style="color:white" href="https://www.facebook.com/abhinaysingh.rajput.31">| Facebook</a>
+    </p>
+</div>
+</body>
+</html>
