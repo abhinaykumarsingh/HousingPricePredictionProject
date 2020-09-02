@@ -3,85 +3,97 @@
 <!DOCTYPE html>
 <html >
 <head>
-  <meta charset="UTF-8">
-  <title>Bangalore House Price Predictor ML App</title>
- 
-  <style>
-   
-      body {
-      background-image: url('abhinay.jpg');
-      background-repeat: no-repeat;
-      background-attachment: fixed;
-      background-size: cover;
-    }
- 
-    h1   {color: red;}  /* CSS code for heading h1 */
-    p   {color: yellow;}  /* CSS code for heading h1 */
- 
-    /* CSS code for button */
-    .button_css {
-    color: #494949 !important;
-    text-transform: uppercase;
-    text-decoration: none;
-    background: #ffffff;
-    padding: 20px;
-    border: 4px solid #494949 !important;
-    display: inline-block;
-    transition: all 0.4s ease 0s;
-    }
-     
-    .button_css:hover {
-    color: #ffffff !important;
-    background: #f6b93b;
-    border-color: #f6b93b !important;
-    transition: all 0.4s ease 0s;
-    }
-     
-    .footer {
-  position: fixed;
-  left: 0;
-  bottom: 0;
-  width: 100%;
-  background-color: #401a20;
-  color: white;
-  text-align: center;
-   
-  /* unvisited link */ 
-  a:link { color: White; } 
-  /* visited link */ 
-  a:visited { color: green; }
-}   
-  </style>
- 
-</head>
- 
-<body style="background-color:#b3d9ff; >
->
- 
-  <!-- Show Oxstandhard Univercity Banner-->
-  <div>
-    <img src="static/images/bangalore house banner.png" class="w3-border w3-padding" alt="Indian AI Production" style="width:100%">
-  </div>
- 
-  
-  
- <div class="login">
-     
-    <!-- Form Get input to predict Marks-->
-    <center>
-    <form action="{{ url_for('predict')}}"method="post">
-     <h1><u>Enter the Information of House to Predict the Price</u></h1>
-         
-        <input style="height:30px;width:300px;font-size:14pt; text-align: center; align="center" type="number" name="bathrooms" placeholder="Bathrooms" required="required" width="48" height="10" step=".01"/><br>
+    <title>Banglore Home Price Prediction</title>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="app.js"></script>
+	<link rel="stylesheet" type='text/css' href="{{url_for('static', filename='style/index.css')}}">
+
+</head> 
+<body>  
+<div class="img"></div> 
+<center><div class="title"><h1>Banglore Home Price Prediction</h1></div></center>                
+<form class="form" action="{{ url_for('predict')}}"method="post">
+    <center><h2 style="color:red"><u>Enter the Details</u></h2></center>
+                                                   
+    <h2>Bathroom</h2>
+	<div class="switch-field">
+		<input type="radio" id="radio-bath-1" name="bath" value="1"/>
+		<label for="radio-bath-1">1</label>
+		<input type="radio" id="radio-bath-2" name="bath" value="2"/>
+		<label for="radio-bath-2">2</label>
+		<input type="radio" id="radio-bath-3" name="bath" value="3"/>
+		<label for="radio-bath-3">3</label>
+		<input type="radio" id="radio-bath-4" name="bath" value="4"/>
+		<label for="radio-bath-4">4</label>
+		<input type="radio" id="radio-bath-5" name="bath" value="5"/>
+		<label for="radio-bath-5">5</label>
+		<input type="radio" id="radio-bath-6" name="bath" value="6"/>
+		<label for="radio-bath-6">6</label>
+		<input type="radio" id="radio-bath-7" name="bath" value="7"/>
+		<label for="radio-bath-7">7</label>
+		<input type="radio" id="radio-bath-8" name="bath" value="8"/>
+		<label for="radio-bath-8">8</label>
+		<input type="radio" id="radio-bath-9" name="bath" value="9"/>
+		<label for="radio-bath-9">9</label>
+		<input type="radio" id="radio-bath-10" name="bath" value="10"/>
+		<label for="radio-bath-10">10</label>                
+	</div>
     
-        <input style="height:30px;width:300px;font-size:14pt;text-align: center; align="center" type="number" name="balcony" placeholder="Balcony" required="required" width="48" height="10" step=".01"/><br>
+	<h2>Balcony</h2>
+	<div class="switch-field">
+		<input type="radio" id="radio-balcony-1" name="balcony" value="1"/>
+		<label for="radio-balcony-1">1</label>
+		<input type="radio" id="radio-balcony-2" name="balcony" value="2"/>
+		<label for="radio-balcony-2">2</label>
+		<input type="radio" id="radio-balcony-3" name="balcony" value="3"/>
+		<label for="radio-balcony-3">3</label>
+		<input type="radio" id="radio-balcony-4" name="balcony" value="4"/>
+		<label for="radio-balcony-4">4</label>
+		<input type="radio" id="radio-balcony-5" name="balcony" value="5"/>
+		<label for="radio-balcony-5">5</label>
+		<input type="radio" id="radio-balcony-6" name="balcony" value="6"/>
+		<label for="radio-balcony-6">6</label>
+		<input type="radio" id="radio-balcony-7" name="balcony" value="7"/>
+		<label for="radio-balcony-7">7</label>
+		<input type="radio" id="radio-balcony-8" name="balcony" value="8"/>
+		<label for="radio-balcony-8">8</label>
+		<input type="radio" id="radio-balcony-9" name="balcony" value="9"/>
+		<label for="radio-balcony-9">9</label>
+		<input type="radio" id="radio-balcony-10" name="balcony" value="10"/>
+		<label for="radio-balcony-10">10</label>        
+	</div>                                                           
+                                                                     
+   	<h2>Enter Total Sqft</h2>
+        <input class="area"  type="number" id="uiSqft" class="number" name="total_sqft_int" placeholder="Enter Total Squre Foot"/><br>
+    
+	<h2>BHK</h2>
+	<div class="switch-field">
+		<input type="radio" id="radio-bhk-1" name="bhk" value="1"/>
+		<label for="radio-bhk-1">1</label>
+		<input type="radio" id="radio-bhk-2" name="bhk" value="2"/>
+		<label for="radio-bhk-2">2</label>
+		<input type="radio" id="radio-bhk-3" name="bhk" value="3"/>
+		<label for="radio-bhk-3">3</label>
+		<input type="radio" id="radio-bhk-4" name="bhk" value="4"/>
+		<label for="radio-bhk-4">4</label>
+		<input type="radio" id="radio-bhk-5" name="bhk" value="5"/>
+		<label for="radio-bhk-5">5</label>
+		<input type="radio" id="radio-bhk-6" name="bhk" value="6"/>
+		<label for="radio-bhk-6">6</label>
+		<input type="radio" id="radio-bhk-7" name="bhk" value="7"/>
+		<label for="radio-bhk-7">7</label>
+		<input type="radio" id="radio-bhk-8" name="bhk" value="8"/>
+		<label for="radio-bhk-8">8</label>
+		<input type="radio" id="radio-bhk-9" name="bhk" value="9"/>
+		<label for="radio-bhk-9">9</label>
+		<input type="radio" id="radio-bhk-10" name="bhk" value="10"/>
+		<label for="radio-bhk-10">10</label>        
+	</div>                                                                                                                         
         
-        <input style="height:30px;width:300px;font-size:14pt;text-align: center; align="center" type="number" name="total_sqft_int" placeholder="Total Squre Foot" required="required" width="48" height="10" step=".01"/><br>
-    
-        <input style="height:30px;width:300px;font-size:14pt;text-align: center; align="center" type="number" name="bhk" placeholder="BHK" required="required" width="48" height="10" step=".01"/><br>
-        
-        <input style="height:30px;width:300px;font-size:14pt;text-align: center; align="center" type="number" name="price_per_sqft" placeholder="Wished Price Per Squre Foot" required="required" width="48" height="10" step=".01"/><br>
-    
+   	<h2>Price per Sqft</h2>
+        <input class="area"  type="number" id="uiSqft" class="number" name="price_per_sqft" placeholder="Enter Desired Price Per Squre Foot"/><br>                             
+                                                                                                                                        
+   	<h2>Select Location</h2>
         <select required="required" width="48" height="10" step=".01" class="location" name="location" id="uiLocations"><br>
         <option value="" disabled="disabled" selected="selected"> Choose a Location </option>
         <option>Hennur Gardens</option>     
@@ -193,29 +205,33 @@
         <br>
          
         <!-- Show button -->
-        <div class="button_cont" align="center"><a class="button_css" target="_blank" rel="nofollow noopener">
+        <div class="submit" align="center"><a class="button_css" target="_blank" rel="nofollow noopener">
             <button type="submit" class="btn btn-primary btn-block btn-large"><strong>Predict House Price</strong></button></a>
         </div>
-         
+        
+        
     </form>
-    </center>
+    <center>
+    <div class="result">
+       
+          <h2>{{ prediction_text }}</h2>
+      
+   		</div>
+   	</center>
     
    <!-- Show predicted output using ML model --> 
-   <div>
-       <center>
-   <h2>{{ prediction_text }}</h2>
-       </center>
-   </div>
- 
+ 	<center>
+    <div class="footer">
+    <center><p style="color:bold black">Developed by - Abhinay Kumar Singh<br></center>
+     
+      <a style="color:red" href="https://www.instagram.com/abhinaysinghrajputt/">Instagram |</a>
+      <a style="color:red" href="https://www.facebook.com/abhinaysingh.rajput.31">| Facebook</a>
+    </p>
+	</div>
+	</center>
  </div>
  
  
-<div class="footer">
-    <p>Abhinay Kumar Singh<br>
-     
-      <a style="color:white" href="https://www.instagram.com/abhinaysinghrajputt/">Instagram |</a>
-      <a style="color:white" href="https://www.facebook.com/abhinaysingh.rajput.31">| Facebook</a>
-    </p>
-</div>
+
 </body>
 </html>
